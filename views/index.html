@@ -110,6 +110,12 @@
                       <input ng-show="editing" ng-model="album.artistName" type="text" class="form-control input-md">
                       <span ng-hide="editing">{{album.artistName}}</span>
                     </li>
+
+                    <li class="list-group-item">
+                      <h4 class="inline-header">Genres:</h4>
+                      <input ng-show="editing" ng-model="album.genres" type="text" class="form-control input-md">
+                      <span ng-hide="editing">{{album.genres.toString()}}</span>
+                    </li>
                   </ul>
                 </div>
               </div>

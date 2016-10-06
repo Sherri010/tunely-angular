@@ -52,14 +52,15 @@ function AlbumsIndexController ($http) {
 }
 
  vm.editAlbum = function(album){
-  console.log(album.name , album.artistName)
+  console.log(album.genres);
   $http({
     method:"PUT",
-    data: {name:album.name , artistName:album.artistName },
+    data: {name:album.name , artistName:album.artistName , genres:album.genres.split(',')},
     url: '/api/albums/'+album._id
   }).then(function success(updatedAlbum){
-      var index = vm.albums.indexOf(updatedAlbum)
-      console.log(vm.albums[index])
+      //console.log(updatedAlbum.genres)
+      var index = vm.albums.indexOf(album);
+
   });
 
  }

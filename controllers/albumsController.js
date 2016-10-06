@@ -48,9 +48,11 @@ function update(req, res) {
   console.log('updating with data', req.body);
   db.Album.findById(req.params.albumId, function(err, foundAlbum) {
     if(err) { console.log('albumsController.update error', err); }
+    console.log("server syays",req.body)
     foundAlbum.artistName = req.body.artistName;
     foundAlbum.name = req.body.name;
     foundAlbum.releaseDate = req.body.releaseDate;
+    foundAlbum.genres = req.body.genres;
     foundAlbum.save(function(err, savedAlbum) {
       if(err) { console.log('saving altered album failed'); }
       res.json(savedAlbum);
