@@ -37,14 +37,18 @@
       <form ng-submit="albumsIndexCtrl.createAlbum()">
           <input type="text" class="form-control" placeholder="New album name" ng-model="albumsIndexCtrl.newAlbum.name">
           <input type="text" class="form-control" placeholder="New album artist" ng-model="albumsIndexCtrl.newAlbum.artistName">
-          <input type="text" class="form-control" placeholder="New album genres" ng-model="albumsIndexCtrl.newAlbum.genres">
+          <textarea type="text" class="form-control" placeholder="New album genres" ng-model="albumsIndexCtrl.newAlbum.genres"></textarea>
           <input type="text" class="form-control" placeholder="New album release date" ng-model="albumsIndexCtrl.newAlbum.releaseDate">
           <input type="submit" name="submit">
       </form>
 <!--         <p><b>albumsIndexCtrl.newAlbum:</b> {{albumsIndexCtrl.newAlbum}}</p> -->
-        <input type="text" class="form-control" ng-model="searchText" placeholder="Search Albums">
+      <form ng-submit="albumsIndexCtrl.searchAlbum()">
+        <input type="text" class="form-control" ng-model="searchField" placeholder="Search By">
+        <input type="text" class="form-control" ng-model="searchText" placeholder="search for">
+      </form>
 
-      <div ng-repeat="album in albumsIndexCtrl.albums | orderBy: 'name' | filter: searchText" class="row">
+      <input type="text" class="form-control" ng-model="filterText" placeholder="filter Albums">
+      <div ng-repeat="album in albumsIndexCtrl.albums | orderBy: 'name' | filter: filterText " class="row">
 
         <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
@@ -66,6 +70,11 @@
                     <li class="list-group-item">
                       <h4 class="inline-header">Artist Name:</h4>
                       <span>{{album.artistName}}</span>
+                    </li>
+
+                    <li class="list-group-item">
+                      <h4 class="inline-header">genres:</h4>
+                      <span>{{album.genres.toString()}}</span>
                     </li>
                   </ul>
                 </div>
